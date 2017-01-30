@@ -1,0 +1,391 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\RequirePackage{silence}
+\documentclass[french,english]{beamer}
+\input{preamble/packages}
+\input{preamble/math_basics}
+\input{preamble/math_mine}
+\input{preamble/redac}
+\input{preamble/draw}
+\input{preamble/acronyms}
+
+\setbeamertemplate{headline}[singleline]
+
+\title{Axiomatics, then what?}
+\subject{Social Choice}
+\keywords{Axiomatization}
+\author{Olivier Cailloux}
+\institute[LAMSADE]{LAMSADE, Université Paris-Dauphine}
+\date{\formatdate{30}{1}{2017}}
+
+\begin{document}
+\begin{frame}[plain]
+	\tikz[remember picture,overlay]{
+		\path (current page.south west) node[anchor=south west, inner sep=0] {
+			\includegraphics[height=1cm]{LAMSADE95.jpg}
+		};
+		\path (current page.south) ++ (0, 1mm) node[anchor=south, inner sep=0] {
+			\includegraphics[height=9mm]{Dauphine.jpg}
+		};
+		\path (current page.south east) node[anchor=south east, inner sep=0] {
+			\includegraphics[height=1cm]{PSL.png}
+		};
+	}
+	\titlepage
+\end{frame}
+\addtocounter{framenumber}{-1}
+
+\section{Axiomatics}
+\subsection{Axiomatics}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{quote}
+		Rather than dream up a multitude of arbitration schemes and determine whether or not each withstands the best of plausibility in a host of special cases, let us invert the procedure. Let us examine our subjective intuition of fairness and formulate this as a set of precise desiderata that any acceptable arbitration scheme must fulfil. Once these desiderata are formalized as axioms, then the problem is reduced to a mathematical investigation of the existence of and characterization of arbitration schemes which satisfy the axioms.
+	\end{quote}
+	\citet[p. 121]{luce_games_1957}
+\end{frame}
+
+\subsection{Beyond axioms?}
+\begin{frame}
+	\frametitle{\subsecname}
+	Possible view (that I want to counter):
+	\begin{itemize}
+		\item Mathematically capture the behavior of a rule (with axioms…)
+		\item Left out for the user: confront their intuition about fairness with the axioms
+		\item Scientific approach stops at the first step
+		\item The rest is ultimately subjective
+	\end{itemize}
+	I propose a different view: 
+	\begin{itemize}
+		\item Confronting our subjective intuition of fairness with axioms is hard
+		\item Nobody can do this
+		\item Because we can’t compute implications
+		\item We can help doing this scientifically
+	\end{itemize}
+\end{frame}
+
+\section{The hard problem of reaching the equilibrium}
+\subsection{Problem reduced?}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item Formulate our subjective intuition of fairness as axioms?
+		\item \emph{Excluding} impossibilities?
+		\item Making sure no hidden axiom is left out?
+		\item Accept Arrow’s axioms?
+		\item Who’s subjective intuition?
+	\end{itemize}
+\end{frame}
+
+\subsection{Understand the rule?}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item When do you \emph{understand} a voting rule?
+		\item Borda rule: I know how to count scores
+		\item Is that all?
+		\item Recall we want to capture our (?) idea of fairness
+	\end{itemize}
+\end{frame}
+
+\subsection{What do axioms say?}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item Humans have limited deductive power
+		\item Hence, knowing the definition of a rule does not determine whether we accept it
+		\item Knowing the \emph{axiomatization} of a rule does not determine whether we accept it
+		\item Wanted: equilibrium between principles and case-based, concrete intuitions \citep{goodman_fact_1983, rawls_theory_1999}
+	\end{itemize}
+\end{frame}
+
+\subsection{What do axioms say? (Illustrations)}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{example}[Borda]
+		\begin{itemize}
+			\item We know Borda is the rule that satisfies neutrality, reinforcement, faithfulness, cancellation
+			\item This does not obviously say that Borda fails on Condorcet
+		\end{itemize}
+	\end{example}
+	\begin{example}[Dictatorship]
+		\begin{itemize}
+			\item One may want Arrow’s axioms
+			\item But fail to see what it implies: dictatorship
+			\item Once the implications are understood, one does not want all of Arrow’s axioms any more
+		\end{itemize}
+	\end{example}
+\end{frame}
+
+\subsection{Fishburn-against-Condorcet}
+\begin{frame}[fragile]
+	\frametitle{\subsecname}
+	\begin{minipage}{5.5cm}
+		\citet[p. 544]{fishburn_paradoxes_1974} argument against the Condorcet principle (see also \url{http://rangevoting.org/FishburnAntiC.html}).
+		\begin{block}{Condorcet winner}
+%		\setlength\abovedisplayskip{0 ex}
+%		\begin{equation}
+			$w \text{ VS } \mu, \mu \in \set{a, \ldots, h}\text{? }\uncover<2->{51/101}$
+%		\end{equation}
+		\end{block}
+	\end{minipage}%
+	\begin{minipage}{\columnwidth-5cm}
+		\small
+		\begin{equation}
+			\begin{array}{lrrrrrr}
+				&\multicolumn{6}{c}{\text{nb voters}}\\
+			\cmidrule{2-7}
+					&31	&19	&10	&10	&10	&21	\\
+			\midrule
+				1	&a	&a	&f	&g	&h	&h	\\
+				2	&b	&b	&w	&w	&w	&g	\\
+				3	&c	&c	&a	&a	&a	&f	\\
+				4	&d	&d	&h	&h	&f	&w	\\
+				5	&e	&e	&g	&f	&g	&a	\\
+				6	&w	&f	&e	&e	&e	&e	\\
+				7	&g	&g	&d	&d	&d	&d	\\
+				8	&h	&h	&c	&c	&c	&c	\\
+				9	&f	&w	&b	&b	&b	&b	\\
+			\end{array}
+		\end{equation}
+	%	\begin{tikzpicture}
+	%		\path node[profile matrix] (profile) {
+	%				&31	&19	&10	&10	&10	&21	\\
+	%			1	&a	&a	&f	&g	&h	&h	\\
+	%			2	&b	&b	&w	&w	&w	&g	\\
+	%			3	&c	&c	&a	&a	&a	&f	\\
+	%			4	&d	&d	&h	&h	&f	&w	\\
+	%			5	&e	&e	&g	&f	&g	&a	\\
+	%			6	&w	&f	&e	&e	&e	&e	\\
+	%			7	&g	&g	&d	&d	&d	&d	\\
+	%			8	&h	&h	&c	&c	&c	&c	\\
+	%			9	&f	&w	&b	&b	&b	&b	\\
+	%		};
+	%	\end{tikzpicture}
+	%	BUT ranks:
+	\end{minipage}
+	\vspace{-1pt}
+	\onslide<3>
+	\begin{equation}
+		\vspace*{-8.4pt}
+		\begin{array}{lrrrrrrrrr}
+			&\multicolumn{9}{c}{\text{ranks}}\\
+		\cmidrule{2-10}
+			&1	&≤2	&≤3	&≤4	&≤5	&≤6	&≤7	&≤8	&≤9	\\
+		\midrule
+		w	&0	& 30	& 30	& 51	& 51	& 82	& 82	& 82	&101	\\
+		a	&50	& 50	& 80	& 80	& 101	& 101	& 101	&101	&101	\\
+		\end{array}
+	\end{equation}
+\end{frame}
+
+\section{Possible approach}
+\subsection{Possible approach}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item To know whether one accepts a voting rule, we have to check whether one accepts the implications of the voting rule
+		\item Can’t be done exhaustively
+		\item Can be done using known possible problematic cases
+		\item Axiomatics can help in providing reasonings
+		\item Different axiomatics may have different convincing power
+		\item Acceptance of people in concrete cases can in principle be studied empirically \citep{gaertner_empirical_2012}
+	\end{itemize}
+	\begin{block}{Proposition}
+		\begin{itemize}
+			\item Proposition: propose a research program aiming at such a study / or
+			\item Propose first steps (a framework?)
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Key element}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item Obviously, in many cases, no single decisive rule is the most appropriate
+		\item We have to allow for incompleteness
+		\item E.g. Impossible to completely rank all universities by “quality”
+		\item Possible approach: search for non decisive rules (possible winners…)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+	\addtocounter{framenumber}{-1}
+	\begin{center}
+		\huge
+		\textit{Thank you for your attention!}
+	\end{center}
+\end{frame}
+
+\appendix
+\AtBeginSection{
+}
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]
+	\frametitle{\secname}
+	\def\newblock{\hskip .11em plus .33em minus .07em}
+ 	\bibliography{zotero,philo-eco,beliefs}
+\end{frame}
+
+\section{Voting rules}
+\subsection{Definition}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item Voting rule: a systematic way of aggregating different opinions and decide
+		\item Multiple reasonable ways of doing this
+		\item Different voting rules have different interesting properties
+		\item None satisfy all desirable properties
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Voting rule}
+	
+	\begin{description}[Alternatives]
+		\item[Alternatives] $\allalts = \set{a, b, c, d, \ldots}$
+		\item[Voters] $\allvoters = \set{1, 2, \ldots}$
+		\item[Profile] function $\prof$ from $\allvoters$ to linear orders on $\allalts$.
+		\item[Voting rule] function $f$ mapping each $\prof$ to winners $\emptyset \subset \alts \subseteq \allalts$.
+	\end{description}
+	\vfill
+	\begin{center}
+		\begin{tikzpicture}
+			\path node[profile matrix] (profile) {
+				\prof(1)&
+				\prof(2)
+				\\
+				| (profile11) | a&
+				b
+				\\
+				b&
+				a
+				\\
+				c&
+				| (profile32) | c
+				\\
+			};
+			\path ($(profile.south west)!.5!(profile.south east)$) ++ (0, -5mm) node {$\prof$};
+			
+			\path node[draw, rectangle, fit=(profile11) (profile32), outer xsep=2mm, outer ysep=1mm] (justprofile) {};
+			\path (justprofile.east) ++ (2.5cm, 0) node[inner sep=0] (winners) {\mbox{} $\alts = \Set{a, b}$};
+			\path[draw, ->] (justprofile.east) to[bend left=35] node[anchor=south] {$f$} (winners.west);
+
+			\path[draw, decorate, decoration={brace, mirror}] (justprofile.south west) -- (justprofile.south east);
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\subsection{Example of a profile}
+\begin{frame}[fragile]
+	\frametitle{\subsecname}
+	\begin{center}
+		$\begin{array}{lrrrrrr}
+			&\multicolumn{6}{c}{\text{nb voters}}\\
+		\cmidrule{2-7}
+				&33	&16	&3	&8	&18	&22	\\
+		\midrule
+			1	&a	&b	&c	&c	&d	&e	\\
+			2	&b	&d	&d	&e	&e	&c	\\
+			3	&c	&c	&b	&b	&c	&b	\\
+			4	&d	&e	&a	&d	&b	&d	\\
+			5	&e	&a	&e	&a	&a	&a	\\
+		\end{array}$
+	\end{center}
+	Who wins?
+	\tikz[remember picture,overlay]{
+		\path (current page.south east) ++ (0, 1em) node[anchor=south east, inner sep=0] {
+			\tiny Thanks to \href{http://www.lamsade.dauphine.fr/~lang/}{Jérôme Lang}
+		};
+	}
+	\begin{itemize}
+		\item Most top-1: $a$
+		\item $c$ is in the top 3 for everybody
+		\item delete worst first, lowest nb of pref: $c$, $b$, $e$, $a$ ⇒ $d$
+		\item delete worst first, from bottom: $a$, $e$, $d$, $b$ ⇒ $c$
+		\item Borda: $b$
+		\item Condorcet: $c$
+	\end{itemize}
+\end{frame}
+
+\subsection{Two voting rules}
+\begin{frame}
+	\frametitle{Borda}
+	
+Given a profile $\prof$:
+	\begin{itemize}
+		\item score of $a \in \allalts$: number of alternatives it beats
+		\item the highest scores win
+	\end{itemize}
+	
+	\begin{equation}
+		\prof =
+		\begin{array}{rrrrr}
+			a	&	a	&	a	&	b	&	b\\
+			b	&	b	&	b	&	c	&	c\\
+			c	&	c	&	c	&	a	&	a
+		\end{array}
+	\end{equation}
+	\begin{itemize}
+		\item score $a$ is\dots? \pause $2 + 2 + 2 = 6$
+		\item score $b$ is $1 + 1 + 1 + 2 + 2 = 7$
+		\item score $c$ is $1 + 1 = 2$
+	\end{itemize}
+	Winner: $b$.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Condorcet’s principle}
+	\begin{block}{Condorcet’s principle}
+		We ought to take the Condorcet winner as sole winner if it exists.
+		\begin{itemize}
+			\item $a$ \emph{beats} $b$ iff more than half the voters prefer $a$ to $b$.
+			\item $a$ is a \emph{Condorcet winner} iff $a$ beats every other alternatives.
+		\end{itemize}
+	\end{block}
+	\vfill
+	\begin{equation}
+		\prof =
+		\begin{array}{rrrrr}
+			a	&	a	&	a	&	b	&	b\\
+			b	&	b	&	b	&	c	&	c\\
+			c	&	c	&	c	&	a	&	a
+		\end{array}
+	\end{equation}
+	 Who wins? \pause $a$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Condorcet’s principle and a voting rule}
+	\begin{itemize}
+		\item Condorcet’s principle does not define a voting rule. Why? \pause
+		\item No winner is defined when no Condorcet winner
+	\end{itemize}
+	\begin{equation}
+		\prof =
+		\begin{array}{rrr}
+			b	&	c	&	d\\
+			c	&	d	&	b\\
+			a	&	b	&	a\\
+			d	&	a	&	c
+		\end{array}
+	\end{equation}
+	\pause
+	$a$ loses against $b$; $b$ against $d$; $c$ against $b$; $d$ against $c$
+	\begin{itemize}
+		\item Dodgson’s method (1876): candidates “closest” to being Condorcet winners {\tiny (in nb of swaps)}
+	\end{itemize}
+\end{frame}
+
+\end{document}
+
+\section{Frame template}
+\subsection{}
+\begin{frame}
+	\frametitle{\subsecname}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{frame}
+
